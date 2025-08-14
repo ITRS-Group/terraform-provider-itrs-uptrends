@@ -1,4 +1,4 @@
-resource "monitor" "dns_monitor" {
+resource "itrs-uptrends_monitor" "dns_monitor" {
 	name           = "DNS monitor"
 	monitor_type   = "DNS"
 	generate_alert = true

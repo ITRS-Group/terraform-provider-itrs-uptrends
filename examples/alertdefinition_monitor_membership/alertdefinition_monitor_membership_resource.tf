@@ -1,26 +1,26 @@
 # To assign a monitor to an alert definition, you need first to create both the alert definition and the monitor. Then, you can create a `alertdefinition_monitor_membership` resource that links the two.
-resource "alertdefinition_monitor_membership" "alertdefinition_monitor_membership_example" {
+resource "itrs-uptrends_alertdefinition_monitor_membership" "alertdefinition_monitor_membership_example" {
   provider            = itrs-uptrends.uptrendsauthenticated
-  alertdefinition_id    = alertdefinition.alertdefinition_example.id
-  monitor_id = monitor.certificate_monitor.id
-  depends_on = [alertdefinition.alertdefinition_example, monitor.certificate_monitor]
+  alertdefinition_id    = itrs-uptrends_alertdefinition.alertdefinition_example.id
+  monitor_id = itrs-uptrends_monitor.certificate_monitor.id
+  depends_on = [itrs-uptrends_alertdefinition.alertdefinition_example, itrs-uptrends_monitor.certificate_monitor]
 }
 
 # Import example:
 # Import States available in the Uptrends APP for downloading as a tf file:
 import {
-  to = alertdefinition_monitor_membership.alertdefinition_monitor_membership_imported
-  id = "${alertdefinition.alertdefinition_example.id}:${monitor.certificate_monitor.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc:046a727c-7a90-4776-9e41-ab050bdda5dc")
+  to = itrs-uptrends_alertdefinition_monitor_membership.alertdefinition_monitor_membership_imported
+  id = "${itrs-uptrends_alertdefinition.alertdefinition_example.id}:${itrs-uptrends_monitor.certificate_monitor.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc:046a727c-7a90-4776-9e41-ab050bdda5dc")
   provider          = itrs-uptrends.uptrendsauthenticated
 }
 
-resource "alertdefinition" "alertdefinition_example" {
+resource "itrs-uptrends_alertdefinition" "alertdefinition_example" {
 	name = "Alert Definition Resource Test"
 	is_active = true
 	provider = itrs-uptrends.uptrendsauthenticated
 }
 
-resource "monitor" "certificate_monitor" {
+resource "itrs-uptrends_monitor" "certificate_monitor" {
 	name           = "Certificate monitor"
 	monitor_type   = "Certificate"
 	generate_alert = true

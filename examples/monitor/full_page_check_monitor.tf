@@ -1,4 +1,4 @@
-resource "monitor" "fullpagecheck_monitor" {
+resource "itrs-uptrends_monitor" "fullpagecheck_monitor" {
     name                         = "Full Page Check monitor"
     monitor_type                 = "FullPageCheck"
     generate_alert               = true

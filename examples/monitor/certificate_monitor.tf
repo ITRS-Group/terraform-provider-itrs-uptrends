@@ -1,4 +1,4 @@
-resource "monitor" "certificate_monitor" {
+resource "itrs-uptrends_monitor" "certificate_monitor" {
 	name           = "Certificate monitor"
 	monitor_type   = "Certificate"
 	generate_alert = true

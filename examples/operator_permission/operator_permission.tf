@@ -1,7 +1,7 @@
-resource "operator_permission" "permission123" {
-  operator_id    = operator.operator.id
+resource "itrs-uptrends_operator_permission" "permission123" {
+  operator_id    = itrs-uptrends_operator.operator.id
   permission  = "FinancialOperator"
-  depends_on     = [operator.operator]
+  depends_on     = [itrs-uptrends_operator.operator]
   provider       = itrs-uptrends.uptrendsauthenticated
 }
 
@@ -11,9 +11,9 @@ variable "operator_permissions_list" {
   default     = ["FinancialOperator", "TechnicalOperator"]
 }
 
-resource "operator_permission" "for_each_example_permissions" {
+resource "itrs-uptrends_operator_permission" "for_each_example_permissions" {
   for_each       = toset(var.operator_permissions_list) # Loop through the list of permissions
-  operator_id    = operator.operator.id
+  operator_id    = itrs-uptrends_operator.operator.id
   permission  = each.value
 }
 
@@ -21,7 +21,7 @@ resource "operator_permission" "for_each_example_permissions" {
 # When u create an operator you need to import the operator_permission: AccountAccess.
 # Import States available in the Uptrends APP for downloading as a tf file:
 import {
-  to = operator_permission.permission_imported
-  id = "${operator.operator.id}:AccountAccess"
+  to = itrs-uptrends_operator_permission.permission_imported
+  id = "${itrs-uptrends_operator.operator.id}:AccountAccess"
   provider          = itrs-uptrends.uptrendsauthenticated
 }

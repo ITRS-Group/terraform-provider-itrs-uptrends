@@ -1,4 +1,4 @@
-resource "operator" "operator123" {
+resource "itrs-uptrends_operator" "operator123" {
   provider          = itrs-uptrends.uptrendsauthenticated
   backup_email      = ""
   default_dashboard = "UseAccountSpecifiedDashboard"
@@ -14,7 +14,7 @@ resource "operator" "operator123" {
 # Import example:
 # Import States available in the Uptrends APP for downloading as a tf file:
 import {
-  to = operator.operator123
-  id = "${operator.operatorr123.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc")
+  to = itrs-uptrends_operator.operator123
+  id = "${itrs-uptrends_operator.operator123.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc")
   provider          = itrs-uptrends.uptrendsauthenticated
 }

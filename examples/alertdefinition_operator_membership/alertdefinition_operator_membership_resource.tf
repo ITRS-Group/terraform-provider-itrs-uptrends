@@ -1,19 +1,19 @@
 # To assign an operator to an alertdefinition, you need first to create both the alertdefinition and the operator. Then, you can create an `alertdefinition_operator_membership` resource that links the two.
-resource "alertdefinition_operator_membership" "alertdefinition_operator_membership123" {
+resource "itrs-uptrends_alertdefinition_operator_membership" "alertdefinition_operator_membership123" {
   provider            = itrs-uptrends.uptrendsauthenticated
-  depends_on  = [operator.operator123, alertdefinition.alertdefinition123]
-  alertdefinition_id    = alertdefinition.alertdefinition123.id
-  operator_id = operator.operator123.id
+  depends_on  = [itrs-uptrends_operator.operator123, itrs-uptrends_alertdefinition.alertdefinition123]
+  alertdefinition_id    = itrs-uptrends_alertdefinition.alertdefinition123.id
+  operator_id = itrs-uptrends_operator.operator123.id
   escalationlevel = 3
 }
 
-resource "alertdefinition" "alertdefinition123" {
+resource "itrs-uptrends_alertdefinition" "alertdefinition123" {
 	name = "Alert Definition Resource Test"
 	is_active = true
 	provider = itrs-uptrends.uptrendsauthenticated
 }
 
-resource "operator" "operator123" {
+resource "itrs-uptrends_operator" "operator123" {
   provider                      = itrs-uptrends.uptrendsauthenticated
   backup_email                  = ""
   default_dashboard             = "UseAccountSpecifiedDashboard"
@@ -29,7 +29,7 @@ resource "operator" "operator123" {
 # Import example:
 # Import States available in the Uptrends APP for downloading as a tf file:
 import {
-  to = alertdefinition_operator_membership.alertdefinition_operator_membership_imported
-  id = "${alertdefinition.alertdefinition123.id}:${operator.operator123.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc:046a727c-7a90-4776-9e41-ab050bdda5dc")
+  to = itrs-uptrends_alertdefinition_operator_membership.alertdefinition_operator_membership_imported
+  id = "${itrs-uptrends_alertdefinition.alertdefinition123.id}:${itrs-uptrends_operator.operator123.id}" # Replace with the actual ID (e.g. "046a727c-7a90-4776-9e41-ab050bdda5dc:046a727c-7a90-4776-9e41-ab050bdda5dc")
   provider          = itrs-uptrends.uptrendsauthenticated
 }

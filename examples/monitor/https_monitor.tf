@@ -1,4 +1,4 @@
-resource "monitor" "https_monitor" {
+resource "itrs-uptrends_monitor" "https_monitor" {
   provider = itrs-uptrends.uptrendsauthenticated
   name     = "HTTPS monitor"
   monitor_type      = "Https"
