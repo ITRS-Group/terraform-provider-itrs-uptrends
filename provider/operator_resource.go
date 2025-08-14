@@ -48,11 +48,7 @@ type operatorResourceModel struct {
 }
 
 // Metadata sets the resource type name used in Terraform configurations.
-func (r *operatorResource) Metadata(
-	ctx context.Context,
-	req resource.MetadataRequest,
-	resp *resource.MetadataResponse,
-) {
+func (r *operatorResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_operator"
 }
 
