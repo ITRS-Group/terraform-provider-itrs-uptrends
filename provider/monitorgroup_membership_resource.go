@@ -41,7 +41,7 @@ func NewMonitorgroupMembershipResource(client interfaces.IMonitorGroupMember) re
 
 // Metadata returns the resource type name.
 func (r *monitorgroupMembershipResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "monitorgroup_membership"
+	resp.TypeName = req.ProviderTypeName + "_monitorgroup_membership"
 }
 
 // Schema defines the schema for the resource.

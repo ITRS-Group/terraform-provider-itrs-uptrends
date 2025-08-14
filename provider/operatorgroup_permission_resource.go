@@ -40,7 +40,7 @@ type operatorGroupPermissionModel struct {
 
 // Metadata returns the resource type name.
 func (r *operatorGroupPermissionResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "operatorgroup_permission"
+	resp.TypeName = req.ProviderTypeName + "_operatorgroup_permission"
 }
 
 // Schema defines the schema for the operatorgroup_permission resource.

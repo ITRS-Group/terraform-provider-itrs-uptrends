@@ -42,7 +42,7 @@ func NewMonitorResource(client interfaces.IMonitor) resource.Resource {
 
 // Metadata implements resource.Resource.
 func (r *monitorResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "monitor"
+	resp.TypeName = req.ProviderTypeName + "_monitor"
 }
 
 func (r *monitorResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {

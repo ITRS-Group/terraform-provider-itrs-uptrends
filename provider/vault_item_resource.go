@@ -32,8 +32,8 @@ func NewVaultItemResource(client interfaces.IVaultItem) resource.Resource {
 }
 
 // Metadata sets the resource type name
-func (r *vaultItemResource) Metadata(_ context.Context, _ resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "vault_item"
+func (r *vaultItemResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_vault_item"
 }
 
 // Schema returns the Terraform schema for this resource

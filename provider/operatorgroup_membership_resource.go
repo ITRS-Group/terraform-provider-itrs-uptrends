@@ -41,7 +41,7 @@ type membershipModel struct {
 
 // Metadata returns the resource type name.
 func (r *membershipResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "operatorgroup_membership"
+	resp.TypeName = req.ProviderTypeName + "_operatorgroup_membership"
 }
 
 // Schema defines the schema for the membership resource.

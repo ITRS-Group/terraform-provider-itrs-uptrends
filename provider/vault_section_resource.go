@@ -34,7 +34,7 @@ func NewVaultSectionResource(c interfaces.IVaultSection) resource.Resource {
 
 // Metadata sets the resource type name.
 func (r *vaultSectionResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "vault_section"
+	resp.TypeName = req.ProviderTypeName + "_vault_section"
 }
 
 // Schema defines the schema for the vault_section resource.

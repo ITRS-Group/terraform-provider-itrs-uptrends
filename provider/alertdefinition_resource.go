@@ -39,7 +39,7 @@ func NewAlertdefinitionResource(c interfaces.IAlertDefinition) resource.Resource
 
 // Metadata sets the resource type name.
 func (r *alertdefinitionResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "alertdefinition"
+	resp.TypeName = req.ProviderTypeName + "_alertdefinition"
 }
 
 // Schema defines the schema for the alertdefinition resource.

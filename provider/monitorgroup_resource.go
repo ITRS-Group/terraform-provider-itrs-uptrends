@@ -42,7 +42,7 @@ type monitorGroupResourceModel struct {
 
 // Metadata returns the resource type name.
 func (r *monitorGroupResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "monitorgroup"
+	resp.TypeName = req.ProviderTypeName + "_monitorgroup"
 }
 
 // Schema defines the resource schema with defaulting and plan modifiers.

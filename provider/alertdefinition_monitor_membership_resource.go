@@ -35,7 +35,7 @@ type alertDefinitionMonitorMembershipModel struct {
 
 // Metadata returns the resource type name.
 func (r *alertDefinitionMonitorMembershipResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = "alertdefinition_monitor_membership"
+	resp.TypeName = req.ProviderTypeName + "_alertdefinition_monitor_membership"
 }
 
 // Schema defines the schema for the resource.
