@@ -24,6 +24,7 @@ type UptrendsProvider struct {
 	monitorGroupMembership                 *api.MonitorGroupMember
 	alertDefinition                        *api.AlertDefinition
 	alertDefinitionMonitorMember           *api.AlertDefinitionMonitorMember
+	alertDefinitionMonitorGroupMember      *api.AlertDefinitionMonitorGroupMember
 	monitor                                *api.Monitor
 	monitorGroup                           *api.MonitorGroupClient
 	checkpoint                             *api.Checkpoint
@@ -109,6 +110,7 @@ func (p *UptrendsProvider) Configure(ctx context.Context, req provider.Configure
 	p.monitorGroupMembership = api.NewMonitorGroupMember(urlSource.MonitorGroupURL(), header, constants.NewBuildVersion, platform)
 	p.alertDefinition = api.NewAlertDefinition(urlSource.AlertDefinitionURL(), header, constants.NewBuildVersion, platform)
 	p.alertDefinitionMonitorMember = api.NewAlertDefinitionMonitorMember(urlSource.AlertDefinitionURL(), header, constants.NewBuildVersion, platform)
+	p.alertDefinitionMonitorGroupMember = api.NewAlertDefinitionMonitorGroupMember(urlSource.AlertDefinitionURL(), header, constants.NewBuildVersion, platform)
 	p.alertDefinitionOperatorMembership = api.NewAlertDefinitionOperatorMembership(urlSource.AlertDefinitionURL(), header, constants.NewBuildVersion, platform)
 	p.alertDefinitionOperatorGroupMembership = api.NewAlertDefinitionOperatorGroupMembership(urlSource.AlertDefinitionURL(), header, constants.NewBuildVersion, platform)
 	p.operatorGroupPermission = api.NewOperatorGroupPermission(urlSource.OperatorGroupURL(), header, constants.NewBuildVersion, platform)
@@ -125,6 +127,7 @@ func (p *UptrendsProvider) Resources(ctx context.Context) []func() resource.Reso
 		p.createAlertDefinitionOperatorMembershipResource,
 		p.createAlertDefinitionOperatorGroupMembershipResource,
 		p.createAlertDefinitionMonitorMember,
+		p.createAlertDefinitionMonitorGroupMember,
 		p.createMembershipResource,
 		p.createMonitorgroupMembershipResource,
 		p.createMonitorGroupResource,
@@ -169,6 +172,10 @@ func (p *UptrendsProvider) createAlertDefinitionOperatorGroupMembershipResource(
 
 func (p *UptrendsProvider) createAlertDefinitionMonitorMember() resource.Resource {
 	return NewAlertDefinitionMonitorMembershipResource(p.alertDefinitionMonitorMember)
+}
+
+func (p *UptrendsProvider) createAlertDefinitionMonitorGroupMember() resource.Resource {
+	return NewAlertDefinitionMonitorGroupMembershipResource(p.alertDefinitionMonitorGroupMember)
 }
 
 func (p *UptrendsProvider) createMembershipResource() resource.Resource {

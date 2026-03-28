@@ -3,7 +3,8 @@ package client
 // AssignResponse represents the response returned after assigning a monitor.
 type AssignResponse struct {
 	AlertDefinition string `json:"AlertDefinition"`
-	Monitor         string `json:"Monitor"`
+	Monitor         string `json:"Monitor,omitempty"`
+	MonitorGroup    string `json:"MonitorGroup,omitempty"`
 }
 
 // Assignment represents a monitor assignment, which may be an individual monitor or a monitor group.
